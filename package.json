@@ -20,8 +20,7 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"**/*.{ts,js,json,md}\"",
-    "check-format": "prettier --check \"**/*.{ts,js,json,md}\"",
-    "prepare": "husky install"
+    "check-format": "prettier --check \"**/*.{ts,js,json,md}\""
   },
   "repository": {
     "type": "git",
@@ -47,19 +46,8 @@
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-playwright": "^2.2.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.28.0"
-  },
-  "lint-staged": {
-    "*.{ts,js}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md}": [
-      "prettier --write"
-    ]
   }
 }
