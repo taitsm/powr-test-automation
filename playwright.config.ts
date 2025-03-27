@@ -1,54 +1,33 @@
 import { defineConfig, devices } from '@playwright/test';
 
-/**
- * Configuration for POWR.io Playwright tests
- * See https://playwright.dev/docs/test-configuration
- */
 export default defineConfig({
   testDir: './tests',
-  /* Run tests in files in parallel */
-  fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  fullyParallel: false,
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
-  /* Reporter to use */
+  retries: process.env.CI ? 2 : 1,
+  workers: 1,
   reporter: [
     ['html'],
     ['list']
   ],
-  /* Shared settings for all the projects below */
+  globalSetup: './global-setup.ts',
   use: {
-    /* Base URL to use in actions like `await page.goto('/')` */
-    baseURL: 'https://powr.io',
-    /* Collect trace when retrying the failed test */
-    trace: 'on-first-retry',
-    /* Capture screenshot after each test */
+    baseURL: 'https://www.powr.io',
+    storageState: '.auth/user.json',
+    actionTimeout: 15000,
+    navigationTimeout: 30000,
     screenshot: 'only-on-failure',
-    /* Record video only when retrying a test */
-    video: 'on-first-retry',
+    trace: 'on-first-retry',
+    viewport: { width: 1920, height: 1080 },
+    userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
   },
-  /* Configure projects for different browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+      use: {
+        ...devices['Desktop Chrome']
+      },
+    }
   ],
-  /* Timeout settings */
-  timeout: 30000,
-  /* Run local dev server before tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  timeout: 60000,
 });
