@@ -27,7 +27,7 @@ export const test = base.extend<MyFixtures>({
   // Extend the context fixture to ensure authentication state is loaded AND init script applied
   context: async ({ browser, browserName }, use) => {
     logger.debug(`Creating new browser context for test (Browser: ${browserName})`);
-    let contextOptions: any = { // Use 'any' for flexibility with storageState
+    const contextOptions: any = { // Use 'any' for flexibility with storageState
        // Apply standard options from config if needed, or rely on global 'use'
        locale: 'en-US',
        extraHTTPHeaders: { 'Accept-Language': 'en-US,en;q=0.9' },
