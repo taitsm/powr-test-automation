@@ -35,7 +35,7 @@ const getLogLevelNumber = (): LogLevelNumber => {
     return numericLevel;
   } else if (levelFromEnv) {
     // Use console.warn only during this initial setup phase if logger isn't ready
-    console.warn(`[Logger Setup] Invalid LOG_LEVEL '${process.env.LOG_LEVEL}'. Defaulting to '${DEFAULT_LOG_LEVEL_STRING}' (${DEFAULT_LOG_LEVEL_NUMBER}).`);
+    // console.warn(`[Logger Setup] Invalid LOG_LEVEL '${process.env.LOG_LEVEL}'. Defaulting to '${DEFAULT_LOG_LEVEL_STRING}' (${DEFAULT_LOG_LEVEL_NUMBER}).`);
   }
   return DEFAULT_LOG_LEVEL_NUMBER;
 };

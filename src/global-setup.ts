@@ -5,7 +5,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { LoginPage } from '../src/page-objects/login-page.js';
-import { FormBuilderPage } from '../src/page-objects/form-builder-page.js';
 import { takeScreenshot } from '../src/utils/screenshot-utils.js';
 import { logger } from '../src/utils/logger.js'; // Import the central logger
 

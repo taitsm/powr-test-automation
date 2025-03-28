@@ -1,4 +1,4 @@
-import { expect, type Page, type Locator } from '@playwright/test';
+import { expect, type Page } from '@playwright/test';
 import { BasePage } from './base-page.js';
 // Adjust path to utils
 import { logger } from '../utils/logger.js';
