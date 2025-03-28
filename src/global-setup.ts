@@ -6,7 +6,7 @@ import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { LoginPage } from '../src/page-objects/login-page.js';
 import { takeScreenshot } from '../src/utils/screenshot-utils.js';
-import { logger } from '../src/utils/logger.js'; // Import the central logger
+import { logger } from '../src/utils/logger.js';
 
 // Apply the stealth plugin to playwright-extra
 chromium.use(stealth());
@@ -53,7 +53,6 @@ async function launchStealthBrowser(headless: boolean): Promise<Browser> {
             '--disable-blink-features=AutomationControlled',
             '--disable-features=IsolateOrigins,site-per-process,Translate',
             '--disable-site-isolation-trials'
-            // Consider adding '--window-size=1920,1080' if running headed
         ]
     });
 }
